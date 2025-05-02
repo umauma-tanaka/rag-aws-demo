@@ -12,13 +12,13 @@
 flowchart TB
     subgraph EC2[Amazon EC2 t4g.small<br/>Amazon Linux 2023]
         direction TB
-        D[docs/ *.txt] --> C1[Text Splitter<br/>(RecursiveCharacterTextSplitter)]
+        D[docs/ *.txt] --> C1[Text Splitter\n(RecursiveCharacterTextSplitter)]
         C1 --> E1[OpenAI Embedding API]
-        E1 --> VS[(Chroma Vector Store<br/>persist_directory=.chroma)]
+        E1 --> VS[(Chroma Vector Store\npersist_directory=.chroma)]
         
         UQ[User Query (CLI / API)] --> EQ[Embed Query<br/>(OpenAI API)]
-        EQ --> SR[Similarity Search<br/>Top‑k chunks]
-        SR --> PB[Prompt Builder<br/>(context + query)]
+        EQ --> SR[Similarity Search\nTop‑k chunks]
+        SR --> PB[Prompt Builder\n(context + query)]
         PB --> LLM[(OpenAI GPT‑4o mini)]
         LLM --> UA[Answer w/ citations]
     end
