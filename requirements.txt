@@ -1,0 +1,13 @@
+# --- Core RAG stack ---
+langchain-core>=0.2.9,<0.3
+langchain-community>=0.2.9,<0.3
+langchain-openai>=0.1.5,<0.2
+langchain-chroma>=0.1.0,<0.2
+chromadb>=0.4.24,<0.5
+
+# --- Utilities ---
+python-dotenv>=1.0
+
+# (任意) HTTP API を試す場合
+fastapi>=0.110
+uvicorn[standard]>=0.29

@@ -109,7 +109,7 @@ def answer_question(question: str, persist_dir: Path, k: int = 5):
         input_variables=["context", "question"],
     ).format(context=context, question=question)
 
-    log(f"Input LLM context{context}, question={question}")
+    #log(f"Input LLM context{context}, question={question}")
     log("Call LLM (chat completion)")
     chat = ChatOpenAI(model_name=CHAT_MODEL_NAME, temperature=0.2)
     response = chat.invoke(prompt)  # ← LangChain v0.2 API
