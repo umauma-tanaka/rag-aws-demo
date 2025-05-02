@@ -10,21 +10,19 @@
 
 ```mermaid
 flowchart TB
-    subgraph EC2 ["Amazon EC2 t4g.small\nAmazon Linux 2023"]
+    subgraph EC2["Amazon EC2 t4g.small\nAmazon Linux 2023"]
         direction TB
         D[docs/*.txt] --> C1["Text Splitter\n(RecursiveCharacterTextSplitter)"]
-        C1 --> E1["OpenAI Embedding\nAPI"]
-        E1 --> VS["Chroma\nVector Store (.chroma)"]
+        C1 --> E1["OpenAI Embedding API"]
+        E1 --> VS["Chroma Vector Store\n(.chroma)"]
 
-        %% --- Retrieval pipeline ---
         UQ["CLI / API\nUser Query"] --> EQ["Embed Query"]
         EQ --> SR["Similarity Search\nTop-k"]
-        VS --- SR                         %% dashed: read access
+        VS -.-> SR                         %% dashed: read access
         SR --> PB["Prompt Builder"]
         PB --> LLM["OpenAI GPT-4o mini"]
         LLM --> UA["Answer\n(with citations)"]
     end
-    VS -. disk(EBS gp3 20 GB) .- VS
 ```
 
 **要点**  
