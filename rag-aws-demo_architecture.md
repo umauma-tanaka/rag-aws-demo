@@ -18,7 +18,7 @@ flowchart TB
 
         UQ["CLI / API\nUser Query"] --> EQ["Embed Query"]
         EQ --> SR["Similarity Search\nTop-k"]
-        VS -.-> SR                         %% dashed: read access
+        VS -.-> SR
         SR --> PB["Prompt Builder"]
         PB --> LLM["OpenAI GPT-4o mini"]
         LLM --> UA["Answer\n(with citations)"]
